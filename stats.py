@@ -1,12 +1,13 @@
-def count_words():
-    with open("/home/alianos/projects/github.com/alianos-cmd/bookbot/books/frankenstein.txt") as f:
+
+def count_words(book):
+    with open(book) as f:
         text = f.read()
         split_text = text.split()
         words = len(split_text)
-        print(f"{words} words found in the document")
+        return words
 
-def count_characters():
-    with open("/home/alianos/projects/github.com/alianos-cmd/bookbot/books/frankenstein.txt") as f:
+def count_characters(book):
+    with open(book) as f:
         text = f.read()
         characters = list(text.lower())
         character_list = {}
@@ -19,5 +20,12 @@ def count_characters():
 
         return character_list
 
-
-count_characters()
+def sort(characters):
+    sorted_list = []
+    for character in characters:
+        char_dict = {"letter": character, "count": characters[character]}
+        sorted_list.append(char_dict)
+    return sorted_list
+    
+def sort_on(dict):
+    return dict["count"]
